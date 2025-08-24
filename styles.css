@@ -94,13 +94,21 @@ h2 {
     font-weight: 500;
 }
 
-.touch-area {
+/* Finger Buttons Styles */
+.finger-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.finger-button {
     width: 120px;
     height: 120px;
-    margin: 0 auto;
     border: 3px solid #667eea;
     border-radius: 50%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -108,37 +116,46 @@ h2 {
     position: relative;
     background: linear-gradient(145deg, #f0f0f0, #e6e6e6);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 10px;
 }
 
-.touch-area:hover {
+.finger-button:hover {
     transform: scale(1.05);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
-.touch-area:active {
+.finger-button:active {
     transform: scale(0.95);
     background: linear-gradient(145deg, #e6e6e6, #f0f0f0);
 }
 
-.fingerprint-scanner {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
+.finger-button.pressed {
+    background: linear-gradient(145deg, #667eea, #764ba2);
+    border-color: #764ba2;
+    color: white;
+    transform: scale(0.95);
 }
 
-.fingerprint-scanner::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') center/contain no-repeat;
-    opacity: 0.8;
+.finger-button.pressed .finger-icon {
+    color: white;
+}
+
+.finger-button.pressed span {
+    color: white;
+}
+
+.finger-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: #667eea;
+}
+
+.finger-button span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #666;
+    text-align: center;
+    line-height: 1.2;
 }
 
 /* Loading Screen Styles */
@@ -271,14 +288,29 @@ h2 {
     position: relative;
 }
 
-.space-fingerprint .touch-area {
+.space-fingerprint .finger-button {
     border-color: #fff;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
 }
 
-.space-fingerprint .fingerprint-scanner {
-    background: linear-gradient(45deg, #fff, #ddd);
+.space-fingerprint .finger-button .finger-icon {
+    color: #fff;
+}
+
+.space-fingerprint .finger-button span {
+    color: #fff;
+}
+
+.space-fingerprint .finger-button.pressed {
+    background: linear-gradient(145deg, #fff, #ddd);
+    border-color: #fff;
+    color: #333;
+}
+
+.space-fingerprint .finger-button.pressed .finger-icon,
+.space-fingerprint .finger-button.pressed span {
+    color: #333;
 }
 
 /* Final Screen Styles */
@@ -338,14 +370,21 @@ h2 {
         font-size: 2.5rem;
     }
     
-    .touch-area {
+    .finger-buttons {
+        gap: 15px;
+    }
+    
+    .finger-button {
         width: 100px;
         height: 100px;
     }
     
-    .fingerprint-scanner {
-        width: 50px;
-        height: 50px;
+    .finger-icon {
+        font-size: 1.5rem;
+    }
+    
+    .finger-button span {
+        font-size: 0.7rem;
     }
     
     .celebration h1 {
@@ -374,14 +413,21 @@ h2 {
         font-size: 2rem;
     }
     
-    .touch-area {
+    .finger-buttons {
+        gap: 10px;
+    }
+    
+    .finger-button {
         width: 80px;
         height: 80px;
     }
     
-    .fingerprint-scanner {
-        width: 40px;
-        height: 40px;
+    .finger-icon {
+        font-size: 1.2rem;
+    }
+    
+    .finger-button span {
+        font-size: 0.6rem;
     }
     
     .instruction {

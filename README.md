@@ -5,8 +5,9 @@ Una aplicación web divertida que simula un sistema de autenticación con huella
 ## 🌟 Características
 
 - **Diseño completamente responsive** - Funciona en móviles, tablets y desktop
+- **Botones separados para cada dedo** - Interfaz intuitiva con botones individuales
 - **Simulación realista** - Barra de progreso con efectos visuales
-- **Múltiples intentos** - El sistema "falla" 3 veces antes de funcionar
+- **Solo 3 intentos** - El sistema "falla" 2 veces antes de funcionar
 - **Efectos visuales** - Animaciones suaves y transiciones elegantes
 - **Pantalla del espacio** - Mensajes divertidos con efecto de escritura
 - **Mensaje final motivacional** - Celebración con colores vibrantes
@@ -14,18 +15,17 @@ Una aplicación web divertida que simula un sistema de autenticación con huella
 ## 📱 Cómo usar
 
 1. **Abre el archivo `index.html`** en tu navegador web
-2. **Presiona el área circular** con los dos pulgares (o haz clic)
-3. **Observa la barra de progreso** que se llena hasta el 80%
-4. **Lee el mensaje** que aparece y presiona "Intentémoslo otra vez"
+2. **Presiona ambos botones de dedos** (izquierdo y derecho) simultáneamente
+3. **Observa la barra de progreso** que se llena hasta el 70%
+4. **Lee el mensaje** que aparece y presiona "Vuelve a presionar"
 5. **Repite el proceso** hasta que llegue al 100%
 6. **Disfruta los mensajes del espacio** que aparecen uno por uno
-7. **Presiona nuevamente** para ver el mensaje final motivacional
+7. **Presiona los botones de dedos nuevamente** para ver el mensaje final motivacional
 
 ## 🎯 Flujo de la aplicación
 
 ### Primera fase - Autenticación inicial:
-- Progreso hasta 80% → "Presiona un poco más fuerte"
-- Progreso hasta 70% → "Presiona más fuerte" 
+- Progreso hasta 70% → "Presiona más fuerte"
 - Progreso hasta 98% → "Presiona más fuerte"
 - Progreso hasta 100% → "¡Así de insistente hay que ser con los metros!"
 
@@ -34,6 +34,7 @@ Una aplicación web divertida que simula un sistema de autenticación con huella
 - "Si tienes una nariz... ¡acuerdate de mí! 👃"
 - "Si tienes unos labios... ¡como quisiera que fueran míos! 💋"
 - "Digo... ¡sonríe otra vez! 😄"
+- **Aparecen los botones de dedos** para continuar
 
 ### Tercera fase - Mensaje final:
 - "¡BUENOS DÍAS ALEGRÍA! 🎉"
@@ -61,12 +62,14 @@ Una aplicación web divertida que simula un sistema de autenticación con huella
 
 ## 🎨 Características de diseño
 
+- **Botones de dedos individuales** con efectos visuales
 - **Gradientes modernos** en fondos y botones
 - **Efectos de blur** y transparencias
 - **Animaciones CSS** suaves y fluidas
 - **Tipografía legible** en todos los tamaños
 - **Colores vibrantes** y atractivos
 - **Efectos hover** interactivos
+- **Estados presionados** para los botones
 
 ## 🚀 Para ejecutar
 
@@ -78,5 +81,6 @@ Simplemente abre el archivo `index.html` en cualquier navegador web moderno. No 
 - Incluye prevención de zoom no deseado en móviles
 - Los efectos de escritura son suaves y legibles
 - Todas las transiciones son fluidas y profesionales
+- Los botones de dedos requieren que ambos sean presionados para continuar
 
 ¡Disfruta de la experiencia! 🌟

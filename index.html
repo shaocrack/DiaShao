@@ -15,8 +15,15 @@
                 <div class="fingerprint-area">
                     <div class="fingerprint-icon">👆👆</div>
                     <p class="instruction">Presiona aquí con los 2 pulgares</p>
-                    <div class="touch-area" id="touch-area">
-                        <div class="fingerprint-scanner"></div>
+                    <div class="finger-buttons">
+                        <div class="finger-button" id="finger-left">
+                            <div class="finger-icon">👆</div>
+                            <span>Pulgar Izquierdo</span>
+                        </div>
+                        <div class="finger-button" id="finger-right">
+                            <div class="finger-icon">👆</div>
+                            <span>Pulgar Derecho</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -34,7 +41,7 @@
                     <div class="status-message" id="status-message"></div>
                 </div>
                 <div class="retry-button" id="retry-button" style="display: none;">
-                    <button onclick="retryAuthentication()">Intentémoslo otra vez</button>
+                    <button onclick="retryAuthentication()">Vuelve a presionar</button>
                 </div>
             </div>
         </div>
@@ -49,11 +56,18 @@
                         <p class="space-text" id="space-text"></p>
                     </div>
                 </div>
-                <div class="fingerprint-area space-fingerprint">
+                <div class="fingerprint-area space-fingerprint" id="space-fingerprint" style="display: none;">
                     <div class="fingerprint-icon">👆👆</div>
-                    <p class="instruction">Pon otra vez los dedos</p>
-                    <div class="touch-area" id="space-touch-area">
-                        <div class="fingerprint-scanner"></div>
+                    <p class="instruction">Presiona otra vez con los 2 pulgares</p>
+                    <div class="finger-buttons">
+                        <div class="finger-button" id="space-finger-left">
+                            <div class="finger-icon">👆</div>
+                            <span>Dedo Izquierdo</span>
+                        </div>
+                        <div class="finger-button" id="space-finger-right">
+                            <div class="finger-icon">👆</div>
+                            <span>Dedo Derecho</span>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,8 @@
 let currentAttempt = 0;
 let isAuthenticating = false;
 let spaceMessageIndex = 0;
+let leftFingerPressed = false;
+let rightFingerPressed = false;
 
 // Elementos del DOM
 const screens = {
@@ -16,14 +18,14 @@ const elements = {
     progressText: document.getElementById('progress-text'),
     statusMessage: document.getElementById('status-message'),
     retryButton: document.getElementById('retry-button'),
-    spaceText: document.getElementById('space-text')
+    spaceText: document.getElementById('space-text'),
+    spaceFingerprint: document.getElementById('space-fingerprint')
 };
 
-// Configuración de intentos
+// Configuración de intentos (solo 3 intentos)
 const attempts = [
-    { maxProgress: 80, message: "Presiona un poco más fuerte", retryMessage: "Solo llegaste al 80%. Levanta los dedos y vuelve a intentar." },
-    { maxProgress: 70, message: "Presiona más fuerte", retryMessage: "Solo llegaste al 70%. Levanta los dedos y vuelve a intentar." },
-    { maxProgress: 98, message: "Presiona más fuerte", retryMessage: "Solo llegaste al 98%. Levanta los dedos y vuelve a intentar." },
+    { maxProgress: 70, message: "Presiona más fuerte", retryMessage: "Solo llegaste al 70%. Vuelve a presionar." },
+    { maxProgress: 98, message: "Presiona más fuerte", retryMessage: "Solo llegaste al 98%. Vuelve a presionar." },
     { maxProgress: 100, message: "¡Perfecto!", retryMessage: "¡Así de insistente hay que ser con los metros!" }
 ];
 
@@ -42,24 +44,93 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Configurar event listeners
 function setupEventListeners() {
-    // Touch area inicial
-    const touchArea = document.getElementById('touch-area');
-    touchArea.addEventListener('click', startAuthentication);
-    touchArea.addEventListener('touchstart', startAuthentication);
+    // Botones de dedos iniciales
+    const fingerLeft = document.getElementById('finger-left');
+    const fingerRight = document.getElementById('finger-right');
+    
+    fingerLeft.addEventListener('click', () => pressFinger('left'));
+    fingerLeft.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        pressFinger('left');
+    });
+    
+    fingerRight.addEventListener('click', () => pressFinger('right'));
+    fingerRight.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        pressFinger('right');
+    });
 
-    // Touch area del espacio
-    const spaceTouchArea = document.getElementById('space-touch-area');
-    spaceTouchArea.addEventListener('click', startFinalAuthentication);
-    spaceTouchArea.addEventListener('touchstart', startFinalAuthentication);
+    // Botones de dedos del espacio
+    const spaceFingerLeft = document.getElementById('space-finger-left');
+    const spaceFingerRight = document.getElementById('space-finger-right');
+    
+    spaceFingerLeft.addEventListener('click', () => pressSpaceFinger('left'));
+    spaceFingerLeft.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        pressSpaceFinger('left');
+    });
+    
+    spaceFingerRight.addEventListener('click', () => pressSpaceFinger('right'));
+    spaceFingerRight.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        pressSpaceFinger('right');
+    });
+}
+
+// Presionar dedo inicial
+function pressFinger(side) {
+    const button = document.getElementById(`finger-${side}`);
+    
+    if (side === 'left') {
+        leftFingerPressed = true;
+    } else {
+        rightFingerPressed = true;
+    }
+    
+    button.classList.add('pressed');
+    
+    // Verificar si ambos dedos están presionados
+    if (leftFingerPressed && rightFingerPressed) {
+        setTimeout(() => {
+            startAuthentication();
+        }, 300);
+    }
+}
+
+// Presionar dedo del espacio
+function pressSpaceFinger(side) {
+    const button = document.getElementById(`space-finger-${side}`);
+    
+    if (side === 'left') {
+        leftFingerPressed = true;
+    } else {
+        rightFingerPressed = true;
+    }
+    
+    button.classList.add('pressed');
+    
+    // Verificar si ambos dedos están presionados
+    if (leftFingerPressed && rightFingerPressed) {
+        setTimeout(() => {
+            startFinalAuthentication();
+        }, 300);
+    }
 }
 
 // Iniciar autenticación
-function startAuthentication(e) {
-    e.preventDefault();
+function startAuthentication() {
     if (isAuthenticating) return;
     
     isAuthenticating = true;
     currentAttempt = 0;
+    
+    // Resetear estado de dedos
+    leftFingerPressed = false;
+    rightFingerPressed = false;
+    
+    // Remover clases pressed
+    document.getElementById('finger-left').classList.remove('pressed');
+    document.getElementById('finger-right').classList.remove('pressed');
     
     // Cambiar a pantalla de carga
     showScreen('loading');
@@ -148,6 +219,11 @@ function showNextSpaceMessage() {
             spaceMessageIndex++;
             setTimeout(showNextSpaceMessage, 2000);
         });
+    } else {
+        // Mostrar botones de dedos después de todos los mensajes
+        setTimeout(() => {
+            elements.spaceFingerprint.style.display = 'block';
+        }, 1000);
     }
 }
 
@@ -170,11 +246,18 @@ function typeWriter(element, text, callback) {
 }
 
 // Iniciar autenticación final
-function startFinalAuthentication(e) {
-    e.preventDefault();
+function startFinalAuthentication() {
     if (isAuthenticating) return;
     
     isAuthenticating = true;
+    
+    // Resetear estado de dedos
+    leftFingerPressed = false;
+    rightFingerPressed = false;
+    
+    // Remover clases pressed
+    document.getElementById('space-finger-left').classList.remove('pressed');
+    document.getElementById('space-finger-right').classList.remove('pressed');
     
     // Simular carga rápida
     let progress = 0;
