@@ -26,18 +26,21 @@ const elements = {
 const attempts = [
     { 
         maxProgress: 70, 
-        message: "❌ ¡Ups! No llegaste al 100%", 
-        retryMessage: "📱 Levanta los pulgares y vuelve a presionar" 
+        message: "💪 ¡Vas bien! Pero presiona con más fuerza bella", 
+        retryMessage: "📱 Levanta los pulgares y vuelve a presionar",
+        messageType: "motivation"
     },
     { 
         maxProgress: 98, 
-        message: "❌ ¡Ups! No llegaste al 100%", 
-        retryMessage: "📱 Levanta los pulgares y vuelve a presionar" 
+        message: "💪 ¡Vas bien! Pero presiona con más fuerza bella", 
+        retryMessage: "📱 Levanta los pulgares y vuelve a presionar",
+        messageType: "motivation"
     },
     { 
         maxProgress: 100, 
         message: "✅ ¡Perfecto!", 
-        retryMessage: "🎯 ¡Así de insistente hay que ser con los metros!" 
+        retryMessage: "🎯 ¡Así de insistente hay que ser con los metros!",
+        messageType: "success"
     }
 ];
 
@@ -160,6 +163,9 @@ function simulateAuthentication() {
     elements.retryButton.style.display = 'none';
     elements.statusMessage.textContent = '';
     
+    // Remover clases anteriores
+    elements.statusMessage.classList.remove('error', 'success', 'motivation');
+    
     // Simular progreso
     const progressInterval = setInterval(() => {
         progress += Math.random() * 3 + 1; // Incremento aleatorio entre 1-4
@@ -171,17 +177,22 @@ function simulateAuthentication() {
             // Mostrar mensaje de error
             setTimeout(() => {
                 elements.statusMessage.textContent = attempt.message;
+                elements.statusMessage.classList.add(attempt.messageType);
                 
                 if (currentAttempt < attempts.length - 1) {
                     // Mostrar botón de reintentar después de un delay
                     setTimeout(() => {
                         elements.retryButton.style.display = 'block';
                         elements.statusMessage.textContent = attempt.retryMessage;
+                        elements.statusMessage.classList.remove(attempt.messageType);
+                        elements.statusMessage.classList.add('motivation');
                     }, 2000);
                 } else {
                     // Último intento exitoso
                     setTimeout(() => {
                         elements.statusMessage.textContent = attempt.retryMessage;
+                        elements.statusMessage.classList.remove(attempt.messageType);
+                        elements.statusMessage.classList.add('success');
                         setTimeout(() => {
                             showSpaceScreen();
                         }, 2000);

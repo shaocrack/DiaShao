@@ -211,7 +211,6 @@ h2 {
 }
 
 .status-message {
-    color: #e74c3c;
     font-weight: 700;
     font-size: 1.3rem;
     margin: 20px 0;
@@ -221,10 +220,29 @@ h2 {
     justify-content: center;
     padding: 15px;
     border-radius: 10px;
-    background: rgba(231, 76, 60, 0.1);
-    border: 2px solid rgba(231, 76, 60, 0.3);
     animation: messagePulse 2s ease-in-out;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para mensajes de error */
+.status-message.error {
+    color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+    border: 2px solid rgba(231, 76, 60, 0.3);
+}
+
+/* Estilos para mensajes de éxito */
+.status-message.success {
+    color: #27ae60;
+    background: rgba(39, 174, 96, 0.1);
+    border: 2px solid rgba(39, 174, 96, 0.3);
+}
+
+/* Estilos para mensajes de motivación */
+.status-message.motivation {
+    color: #f39c12;
+    background: rgba(243, 156, 18, 0.1);
+    border: 2px solid rgba(243, 156, 18, 0.3);
 }
 
 @keyframes messagePulse {
