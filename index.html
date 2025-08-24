@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticación Biométrica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Pantalla inicial -->
+        <div id="initial-screen" class="screen active">
+            <div class="content">
+                <h1>🔐 Autenticación Biométrica</h1>
+                <div class="fingerprint-area">
+                    <div class="fingerprint-icon">👆👆</div>
+                    <p class="instruction">Presiona aquí con los 2 pulgares</p>
+                    <div class="touch-area" id="touch-area">
+                        <div class="fingerprint-scanner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de carga -->
+        <div id="loading-screen" class="screen">
+            <div class="content">
+                <h2>🔍 Escaneando huellas...</h2>
+                <div class="loading-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                        <div class="progress-text" id="progress-text">0%</div>
+                    </div>
+                    <div class="status-message" id="status-message"></div>
+                </div>
+                <div class="retry-button" id="retry-button" style="display: none;">
+                    <button onclick="retryAuthentication()">Intentémoslo otra vez</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla del espacio -->
+        <div id="space-screen" class="screen">
+            <div class="content space-content">
+                <div class="stars"></div>
+                <div class="space-message">
+                    <h2>🌟 ¡Bienvenido al espacio! 🌟</h2>
+                    <div class="message-container">
+                        <p class="space-text" id="space-text"></p>
+                    </div>
+                </div>
+                <div class="fingerprint-area space-fingerprint">
+                    <div class="fingerprint-icon">👆👆</div>
+                    <p class="instruction">Pon otra vez los dedos</p>
+                    <div class="touch-area" id="space-touch-area">
+                        <div class="fingerprint-scanner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla final -->
+        <div id="final-screen" class="screen">
+            <div class="content final-content">
+                <div class="celebration">
+                    <h1>🎉 ¡BUENOS DÍAS ALEGRÍA! 🎉</h1>
+                    <div class="message-box">
+                        <p>✨ TEN UN BUEN INICIO DE SEMANA ✨</p>
+                        <p>💖 Y RECUERDA QUE TE QUIERO 💖</p>
+                        <p>💪 Y TÚ PUEDES CON TODO 💪</p>
+                        <p>🌟 ¡BUENA SEMANA BONITA! 🌟</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
