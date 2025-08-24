@@ -24,9 +24,21 @@ const elements = {
 
 // Configuración de intentos (solo 3 intentos)
 const attempts = [
-    { maxProgress: 70, message: "Presiona más fuerte", retryMessage: "Solo llegaste al 70%. Vuelve a presionar." },
-    { maxProgress: 98, message: "Presiona más fuerte", retryMessage: "Solo llegaste al 98%. Vuelve a presionar." },
-    { maxProgress: 100, message: "¡Perfecto!", retryMessage: "¡Así de insistente hay que ser con los metros!" }
+    { 
+        maxProgress: 70, 
+        message: "❌ ¡Ups! No llegaste al 100%", 
+        retryMessage: "📱 Levanta los pulgares y vuelve a presionar" 
+    },
+    { 
+        maxProgress: 98, 
+        message: "❌ ¡Ups! No llegaste al 100%", 
+        retryMessage: "📱 Levanta los pulgares y vuelve a presionar" 
+    },
+    { 
+        maxProgress: 100, 
+        message: "✅ ¡Perfecto!", 
+        retryMessage: "🎯 ¡Así de insistente hay que ser con los metros!" 
+    }
 ];
 
 // Mensajes del espacio
